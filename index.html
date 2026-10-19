@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shakiba Shahidiani | AI Engineer</title>
+<meta name="description" content="Shakiba Shahidiani, AI Engineer in Utrecht. RAG systems, multi-agent LLMs, LLM evaluation and machine learning.">
+<meta property="og:title" content="Shakiba Shahidiani | AI Engineer">
+<meta property="og:description" content="RAG systems, multi-agent LLMs, LLM evaluation and machine learning. Based in Utrecht, Netherlands.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shakibashahidiani.github.io/">
+<meta property="og:image" content="https://shakibashahidiani.github.io/photo.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236f7cff'/%3E%3Cstop offset='1' stop-color='%231fb5aa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long scrolling page. Sticky glass nav, glowing hero with a live neural-net canvas, then About, Projects (visual beside text), Journey timeline, Skills, Contact */
+:root{
+  --bg:#eef1fb; --ink:#121633; --muted:#545a7a; --glow1:#6f7cff; --glow2:#1fb5aa; --card:rgba(255,255,255,.7); --solid:#ffffff; --line:rgba(18,22,51,.12); --chip:rgba(18,22,51,.06);
+  --serif:"Gloock",Georgia,serif; --body:"Figtree",system-ui,sans-serif; --mono:"DM Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#070a1a; --ink:#e9ecff; --muted:#a3a9cc; --glow1:#6672ff; --glow2:#19c2b4; --card:rgba(20,26,52,.62); --solid:#11162c; --line:rgba(233,236,255,.12); --chip:rgba(233,236,255,.07); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#070a1a; --ink:#e9ecff; --muted:#a3a9cc; --glow1:#6672ff; --glow2:#19c2b4; --card:rgba(20,26,52,.62); --solid:#11162c; --line:rgba(233,236,255,.12); --chip:rgba(233,236,255,.07); color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px)}
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.inner{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--glow1);outline-offset:3px;border-radius:6px}
+
+/* ambient page glows */
+.amb{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.28;pointer-events:none}
+.amb.a{width:560px;height:560px;background:var(--glow1);left:-220px;top:30vh}
+.amb.b{width:520px;height:520px;background:var(--glow2);right:-220px;top:70vh}
+
+/* nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line)}
+header.nav .inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.brand{font-family:var(--serif);font-size:19px;text-decoration:none}
+.navlinks{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.navlinks a{text-decoration:none;font-size:14px;color:var(--muted);padding:6px 10px;border-radius:999px}
+.navlinks a:hover{color:var(--ink);background:var(--chip)}
+@media (max-width:640px){.navlinks a.hide-sm{display:none}}
+.theme{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;font:600 13px var(--body);cursor:pointer;display:flex;gap:6px;align-items:center}
+.theme svg{width:15px;height:15px}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.hero .g{position:absolute;z-index:-2;width:560px;height:560px;border-radius:50%;filter:blur(80px);opacity:.5}
+.hero .g1{background:var(--glow1);left:-180px;top:-260px}
+.hero .g2{background:var(--glow2);right:-220px;top:80px}
+.hero .inner{padding-block:84px 72px;text-align:center;display:grid;justify-items:center;gap:18px}
+.avatar{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:30px;color:#fff;background:linear-gradient(135deg,var(--glow1),var(--glow2));box-shadow:0 0 0 5px var(--card),0 0 50px color-mix(in srgb,var(--glow1) 60%,transparent)}
+.avatar{position:relative;overflow:hidden}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,7vw,74px);line-height:1;margin:0;max-width:15ch;text-wrap:balance}
+.grad{background:linear-gradient(90deg,var(--glow1),var(--glow2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{margin:0;color:var(--muted);max-width:52ch;font-size:17px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{text-decoration:none;font-weight:600;font-size:14.5px;padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.btn.primary{background:linear-gradient(90deg,var(--glow1),var(--glow2));color:#fff;border-color:transparent}
+.scrollcue{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;margin-top:14px;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* sections */
+section.block{padding-block:72px}
+.sec-head{display:grid;gap:8px;margin-bottom:34px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.6vw,46px);line-height:1.05;margin:0}
+.sec-head p{margin:0;color:var(--muted);max-width:60ch}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.about .text{padding:28px;display:grid;gap:14px}
+.about .text p{margin:0}
+.facts{padding:22px;display:grid;gap:0}
+.facts div{display:flex;justify-content:space-between;gap:14px;padding-block:10px;border-top:1px solid var(--line);font-size:14.5px}
+.facts div:first-child{border-top:0}
+.facts span{color:var(--muted)}
+.facts b{font-weight:600;text-align:right}
+
+/* projects */
+.projects{display:grid;gap:26px}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;overflow:hidden}
+.proj:nth-child(even) .vis{order:2}
+@media (max-width:760px){.proj{grid-template-columns:1fr}.proj:nth-child(even) .vis{order:0}}
+.vis{min-height:260px;display:grid;place-items:center;padding:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--glow1) 14%,transparent),color-mix(in srgb,var(--glow2) 14%,transparent));border-right:1px solid var(--line)}
+.proj:nth-child(even) .vis{border-right:0;border-left:1px solid var(--line)}
+@media (max-width:760px){.vis,.proj:nth-child(even) .vis{border:0;border-bottom:1px solid var(--line)}}
+.vis svg{width:100%;max-width:360px;height:auto;overflow:visible}
+.ptext{padding:28px;display:grid;gap:12px;align-content:center}
+.ptext .k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--glow2)}
+.ptext h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;margin:0}
+.ptext p{margin:0;color:var(--muted)}
+.ptext .hl{color:var(--ink);font-weight:600;border-left:3px solid var(--glow1);padding-left:12px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--mono);font-size:12px;background:var(--chip);border-radius:999px;padding:4px 10px}
+.plinks{display:flex;gap:14px;font-weight:600;font-size:14px}
+.plinks a{text-decoration:none;color:var(--glow1)}
+.plinks a:hover{text-decoration:underline}
+/* cards layout */
+.projects.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.projects.cards{grid-template-columns:1fr}}
+.projects.cards .proj{grid-template-columns:1fr}
+.projects.cards .proj .vis,.projects.cards .proj:nth-child(even) .vis{order:0;border:0;border-bottom:1px solid var(--line);min-height:220px}
+.projects.cards .ptext{align-content:start}
+.more{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.more{grid-template-columns:1fr}}
+.more .glass{padding:18px;display:grid;gap:6px;transition:transform .2s}
+.more .glass:hover{transform:translateY(-3px)}
+.more h4{margin:0;font-size:16px}
+.more p{margin:0;font-size:14px;color:var(--muted)}
+.more .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--glow2)}
+
+/* svg visual tokens */
+.v-ink{fill:var(--ink)} .v-muted{fill:var(--muted)} .v-card{fill:var(--solid)} .v-a{fill:var(--glow1)} .v-b{fill:var(--glow2)}
+.s-line{stroke:var(--line);fill:none} .s-ink{stroke:var(--ink);fill:none} .s-a{stroke:var(--glow1);fill:none} .s-b{stroke:var(--glow2);fill:none} .s-muted{stroke:var(--muted);fill:none}
+.vt{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+.vt-ink{font-family:var(--body);font-size:11px;font-weight:600;fill:var(--ink)}
+.pulse{animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.dash{stroke-dasharray:5 5;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+
+/* journey */
+.journey{position:relative;display:grid;gap:18px;padding-left:28px}
+.journey::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--glow1),var(--glow2));border-radius:2px}
+.step{position:relative;padding:20px 22px;display:grid;gap:4px}
+.step::before{content:"";position:absolute;left:-26px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--glow1)}
+.step .when{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step h3{margin:0;font-size:18px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.skills{grid-template-columns:1fr}}
+.skills .glass{padding:20px;display:grid;gap:12px;align-content:start}
+.skills h3{margin:0;font-size:16px}
+
+/* contact */
+.contact{padding:clamp(24px,5vw,48px);text-align:center;display:grid;gap:16px;justify-items:center}
+.contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5vw,48px);margin:0;line-height:1.05}
+.contact p{margin:0;color:var(--muted);max-width:52ch}
+.email{font-family:var(--mono);font-size:15px;background:var(--chip);border-radius:10px;padding:10px 14px;user-select:all;word-break:break-all}
+footer{padding-block:34px;color:var(--muted);font-size:13px;text-align:center}
+/* side rail */
+.rail{position:fixed;z-index:30;left:calc(14px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%);display:grid;gap:6px;padding:8px;border-radius:999px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.rail a{position:relative;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--muted);text-decoration:none;transition:background .2s,color .2s}
+.rail a svg{width:19px;height:19px}
+.rail a:hover{color:var(--ink);background:var(--chip)}
+.rail a.on{color:#fff;background:linear-gradient(135deg,var(--glow1),var(--glow2))}
+.rail a .tip{position:absolute;left:52px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--solid);border:1px solid var(--line);border-radius:8px;padding:4px 10px;opacity:0;pointer-events:none;transition:opacity .15s}
+.rail a:hover .tip,.rail a:focus-visible .tip{opacity:1}
+@media (min-width:1101px){.inner{padding-left:max(84px,env(safe-area-inset-left,0px))}}
+@media (max-width:1100px) and (min-width:761px){.rail{left:auto;right:calc(14px + env(safe-area-inset-right,0px))}.rail a .tip{left:auto;right:52px}}
+@media (max-width:760px){
+  .rail{top:auto;bottom:0;left:0;right:0;transform:none;border-radius:18px 18px 0 0;display:flex;justify-content:space-around;padding:6px max(10px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));border-bottom:0}
+  .rail a .tip{display:none}
+  footer{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<span class="amb a"></span><span class="amb b"></span>
+
+<header class="nav">
+  <div class="inner">
+    <a class="brand" href="#top">Shakiba S.</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey" class="hide-sm">Journey</a>
+      <a href="#contact">Contact</a>
+      <button type="button" class="theme" id="theme" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg><span id="theme-label">Theme</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Jump to section">
+  <a href="#top" data-s="top" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span class="tip">Home</span></a>
+  <a href="#about" data-s="about" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="tip">About</span></a>
+  <a href="#projects" data-s="projects" aria-label="Projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="tip">Projects</span></a>
+  <a href="#journey" data-s="journey" aria-label="Journey"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="19" r="2"/><path d="M8 5h4a4 4 0 0 1 4 4v1M16 14v1a4 4 0 0 1-4 4H8"/></svg><span class="tip">Journey</span></a>
+  <a href="#skills" data-s="skills" aria-label="Toolbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span class="tip">Toolbox</span></a>
+  <a href="#contact" data-s="contact" aria-label="Contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="tip">Contact</span></a>
+</nav>
+
+<section class="hero" id="top">
+  <span class="g g1"></span><span class="g g2"></span>
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="inner">
+    <div class="avatar"><img src="photo.jpg" alt="Shakiba Shahidiani" onerror="this.remove()"><span aria-hidden="true">SS</span></div>
+    <div class="kicker">AI Engineer · Utrecht, Netherlands</div>
+    <h1>Building <span class="grad">reliable AI</span>, one tested change at a time.</h1>
+    <p class="lede">I'm Shakiba. I build RAG systems, LLM agents and machine learning pipelines, and I dig into problems until I understand what's actually going wrong.</p>
+    <div class="btns"><a class="btn primary" href="#projects">See my projects</a><a class="btn" href="cv.pdf" download>Download CV</a><a class="btn" href="#contact">Get in touch</a></div>
+    <div class="scrollcue">SCROLL ↓</div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="inner">
+    <div class="sec-head"><span class="kicker">About</span><h2>The hard part is rarely the model.</h2></div>
+    <div class="about">
+      <div class="glass text">
+        <p>I've worked on predictive ML systems in industry, researched graph machine learning for drug discovery, and built RAG and multi-agent AI applications from scratch.</p>
+        <p>What I've learned is that reliable AI mostly comes down to the messy data, the edge cases, and figuring out whether a system actually works beyond a convincing demo. So I build the evaluation first and let it tell me when a change is really an improvement.</p>
+        <p>I'm looking for AI Engineer, ML Engineer and Data Scientist roles in the Netherlands.</p>
+      </div>
+      <div class="glass facts">
+        <div><span>Based in</span><b>Utrecht, NL</b></div>
+        <div><span>Education</span><b>MSc Computer Science, Politecnico di Milano</b></div>
+        <div><span>Industry</span><b>Data Scientist, Corteva</b></div>
+        <div><span>Languages</span><b>English, Persian</b></div>
+        <div><span>Work permit</span><b>Valid Dutch permit</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="inner">
+    <div class="sec-head"><span class="kicker">Projects</span><h2>Things I've built</h2><p>Each one taught me something about where AI systems break.</p></div>
+        <div class="projects" id="plist">
+
+      <!-- RAG -->
+      <article class="glass proj">
+        <div class="vis">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Policy documents passing through a filter; the outdated one is blocked">
+            <g>
+              <rect x="10" y="20" width="78" height="50" rx="8" class="v-card"/><rect x="10" y="20" width="78" height="50" rx="8" class="s-line"/>
+              <text x="20" y="40" class="vt-ink">Travel 2025</text><text x="20" y="56" class="vt">active</text>
+              <rect x="10" y="88" width="78" height="50" rx="8" class="v-card" opacity=".55"/><rect x="10" y="88" width="78" height="50" rx="8" class="s-line"/>
+              <text x="20" y="108" class="vt-ink" opacity=".55">Travel 2022</text><text x="20" y="124" class="vt" opacity=".7">superseded</text>
+              <line x1="14" y1="113" x2="84" y2="113" class="s-muted" stroke-width="1.5"/>
+              <rect x="10" y="156" width="78" height="50" rx="8" class="v-card"/><rect x="10" y="156" width="78" height="50" rx="8" class="s-line"/>
+              <text x="20" y="176" class="vt-ink">Code of Conduct</text><text x="20" y="192" class="vt">active</text>
+            </g>
+            <path d="M92 45 C130 45 130 100 150 108" class="s-b dash" stroke-width="2"/>
+            <path d="M92 181 C130 181 130 120 150 116" class="s-b dash" stroke-width="2"/>
+            <path d="M92 113 L128 113" class="s-muted" stroke-width="2" stroke-dasharray="3 4"/>
+            <text x="112" y="104" class="vt">✕</text>
+            <path d="M150 84 L198 84 L184 112 L184 140 L164 132 L164 112 Z" class="v-a" opacity=".85"/>
+            <text x="150" y="160" class="vt">status == active</text>
+            <path d="M200 112 L236 112" class="s-a" stroke-width="2"/>
+            <rect x="238" y="88" width="70" height="48" rx="24" class="v-b" opacity=".9"/>
+            <text x="262" y="117" class="vt-ink" style="fill:#fff">LLM</text>
+            <rect x="228" y="158" width="122" height="54" rx="10" class="v-card"/><rect x="228" y="158" width="122" height="54" rx="10" class="s-line"/>
+            <text x="238" y="178" class="vt-ink">"$185 per night [1]"</text>
+            <text x="238" y="196" class="vt">cites: Travel 2025</text>
+            <path d="M273 138 L273 156" class="s-a" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="ptext">
+          <span class="k">RAG · Evaluation</span>
+          <h3>Policy Assistant</h3>
+          <p>A chat assistant over company policy PDFs that answers with citations. Semantic search kept surfacing outdated policies, so I moved that decision out of the model: a metadata layer filters superseded documents before the LLM sees them.</p>
+          <p class="hl">An evaluation harness on a labelled golden set rejected two changes I was sure were improvements.</p>
+          <div class="tags"><span>FastAPI</span><span>ChromaDB</span><span>OpenAI</span><span>LLM-as-judge</span></div>
+          <div class="plinks"><a href="https://github.com/ShakibaShahidiani/policy-assistant" target="_blank" rel="noopener">View code →</a></div>
+        </div>
+      </article>
+
+      <!-- Debate -->
+      <article class="glass proj">
+        <div class="vis">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Three AI agents debating around a moderator">
+            <circle cx="180" cy="118" r="78" class="s-line" stroke-dasharray="4 6"/>
+            <line x1="180" y1="118" x2="108" y2="58" class="s-a dash" stroke-width="1.5"/>
+            <line x1="180" y1="118" x2="258" y2="62" class="s-b dash" stroke-width="1.5"/>
+            <line x1="180" y1="118" x2="180" y2="200" class="s-a dash" stroke-width="1.5"/>
+            <circle cx="108" cy="58" r="20" class="v-a"/><text x="101" y="62" class="vt-ink" style="fill:#fff">A</text>
+            <circle cx="258" cy="62" r="20" class="v-b"/><text x="252" y="66" class="vt-ink" style="fill:#fff">B</text>
+            <circle cx="180" cy="200" r="20" class="v-a" opacity=".7"/><text x="174" y="204" class="vt-ink" style="fill:#fff">C</text>
+            <rect x="12" y="14" width="78" height="26" rx="13" class="v-card"/><rect x="12" y="14" width="78" height="26" rx="13" class="s-line"/><text x="22" y="31" class="vt">I disagree…</text>
+            <rect x="276" y="18" width="78" height="26" rx="13" class="v-card"/><rect x="276" y="18" width="78" height="26" rx="13" class="s-line"/><text x="286" y="35" class="vt">Counterpoint</text>
+            <circle cx="180" cy="118" r="30" class="v-card"/><circle cx="180" cy="118" r="30" class="s-ink" stroke-width="2"/>
+            <text x="155" y="114" class="vt-ink">moderator</text>
+            <text x="166" y="130" class="vt pulse">checking…</text>
+            <rect x="222" y="168" width="128" height="30" rx="15" class="v-b" opacity=".18"/><text x="232" y="187" class="vt-ink">✓ consensus, stop</text>
+          </svg>
+        </div>
+        <div class="ptext">
+          <span class="k">Multi-agent LLMs</span>
+          <h3>LLM Debate System</h3>
+          <p>Persona-based LLM agents debate a question over several rounds. A moderator agent checks for consensus and decides when to stop, with fallbacks when the debate gets stuck.</p>
+          <p class="hl">Agents need a clear exit. The moderator is that exit.</p>
+          <div class="tags"><span>LiteLLM</span><span>PostgreSQL</span><span>Docker</span><span>Terraform</span><span>AWS</span></div>
+          <div class="plinks"><a href="https://github.com/ShakibaShahidiani/llm-debate-system" target="_blank" rel="noopener">View code →</a></div>
+        </div>
+      </article>
+
+      <!-- Thesis -->
+      <article class="glass proj">
+        <div class="vis">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Knowledge graph of drugs, genes and pathways with a predicted link">
+            <g class="s-line" stroke-width="1.4">
+              <line x1="60" y1="60" x2="140" y2="40"/><line x1="60" y1="60" x2="110" y2="130"/><line x1="140" y1="40" x2="210" y2="80"/>
+              <line x1="110" y1="130" x2="210" y2="80"/><line x1="110" y1="130" x2="170" y2="190"/><line x1="210" y1="80" x2="290" y2="50"/>
+              <line x1="210" y1="80" x2="260" y2="150"/><line x1="170" y1="190" x2="260" y2="150"/><line x1="290" y1="50" x2="320" y2="120"/><line x1="260" y1="150" x2="320" y2="120"/>
+            </g>
+            <line x1="60" y1="60" x2="260" y2="150" class="s-b dash" stroke-width="2.4"/>
+            <circle cx="60" cy="60" r="13" class="v-a"/><circle cx="110" cy="130" r="9" class="v-muted"/><circle cx="140" cy="40" r="9" class="v-b"/>
+            <circle cx="210" cy="80" r="11" class="v-muted"/><circle cx="170" cy="190" r="9" class="v-a" opacity=".7"/><circle cx="290" cy="50" r="9" class="v-b"/>
+            <circle cx="260" cy="150" r="13" class="v-b"/><circle cx="320" cy="120" r="8" class="v-muted"/>
+            <text x="40" y="38" class="vt-ink">drug</text><text x="246" y="182" class="vt-ink">gene</text>
+            <text x="120" y="96" class="vt">predicted link?</text>
+            <g transform="translate(14,200)"><circle cx="5" cy="0" r="5" class="v-a"/><text x="14" y="4" class="vt">drug</text><circle cx="58" cy="0" r="5" class="v-b"/><text x="67" y="4" class="vt">gene</text><circle cx="110" cy="0" r="5" class="v-muted"/><text x="119" y="4" class="vt">pathway / GO</text></g>
+          </svg>
+        </div>
+        <div class="ptext">
+          <span class="k">Graph ML · MSc thesis</span>
+          <h3>Drug repurposing with knowledge graphs</h3>
+          <p>A biomedical knowledge graph of 45,000+ nodes linking drugs, genes, pathways and Gene Ontology terms. Graph embeddings with biologically designed metapaths rank which drugs may interact with which genes.</p>
+          <p class="hl">97% top-10 recall, tested on drugs and genes the model had never seen.</p>
+          <div class="tags"><span>metapath2vec</span><span>Python</span><span>Statistical validation</span></div>
+        </div>
+      </article>
+
+      <!-- Corteva -->
+      <article class="glass proj">
+        <div class="vis">
+          <svg viewBox="0 0 360 230" role="img" aria-label="Seed longevity history and forecast line">
+            <line x1="30" y1="190" x2="340" y2="190" class="s-line"/><line x1="30" y1="20" x2="30" y2="190" class="s-line"/>
+            <g class="s-line" stroke-dasharray="2 5"><line x1="30" y1="60" x2="340" y2="60"/><line x1="30" y1="105" x2="340" y2="105"/><line x1="30" y1="150" x2="340" y2="150"/></g>
+            <path d="M230 92 C260 88 290 100 340 96 L340 140 C290 146 260 134 230 116 Z" class="v-b" opacity=".18"/>
+            <path d="M30 150 C60 120 80 140 105 112 S150 128 175 98 S215 108 230 104" class="s-a" stroke-width="2.5"/>
+            <path d="M230 104 C260 110 290 116 340 118" class="s-b dash" stroke-width="2.5"/>
+            <circle cx="230" cy="104" r="5" class="v-a"/>
+            <text x="38" y="210" class="vt">10 years of production data</text><text x="250" y="210" class="vt">forecast</text>
+            <g transform="translate(40,32)"><rect width="104" height="28" rx="8" class="v-card"/><rect width="104" height="28" rx="8" class="s-line"/><text x="10" y="18" class="vt">Excel</text><line x1="40" y1="14" x2="56" y2="14" class="s-muted"/><text x="62" y="18" class="vt-ink">ML</text></g>
+          </svg>
+        </div>
+        <div class="ptext">
+          <span class="k">Industry · Corteva Agriscience</span>
+          <h3>Seed longevity forecasting</h3>
+          <p>Replaced a manual Excel forecast with a predictive pipeline on ten years of seed production data. Before any model, I rebuilt batch histories whose IDs changed between production stages.</p>
+          <p class="hl">The first problem wasn't the model. It was the data.</p>
+          <div class="tags"><span>XGBoost</span><span>Random Forest</span><span>Feature engineering</span><span>Pandas</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="more">
+      <a class="glass" href="https://github.com/ShakibaShahidiani/LFQA" target="_blank" rel="noopener" style="text-decoration:none"><span class="k">NLP · Fine-tuning</span><h4>Long-Form Question Answering</h4><p>Fine-tuned LLaMA and BART in a RAG pipeline, compared with ROUGE.</p></a>
+      <div class="glass"><span class="k">Deep learning</span><h4>Sensor time-series forecasting</h4><p>Bidirectional LSTM across 6 domains, window size set by autocorrelation.</p></div>
+      <div class="glass"><span class="k">Computer vision</span><h4>Plant health diagnostics</h4><p>Out-of-distribution filter removed non-plant images before training.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="journey">
+  <div class="inner">
+    <div class="sec-head"><span class="kicker">Journey</span><h2>Tehran → Milan → Utrecht</h2></div>
+    <div class="journey">
+      <div class="glass step"><span class="when">2026 · Utrecht</span><h3>Building LLM systems</h3><p>Policy Assistant and the LLM Debate System.</p></div>
+      <div class="glass step"><span class="when">Mar 2025 – Oct 2025 · Milan</span><h3>MSc thesis, Politecnico di Milano</h3><p>Graph machine learning for drug repurposing.</p></div>
+      <div class="glass step"><span class="when">Sep 2024 – Sep 2025 · Italy</span><h3>Data Scientist, Corteva Agriscience</h3><p>Seed longevity forecasting from ten years of production data.</p></div>
+      <div class="glass step"><span class="when">2019 – 2021 · Tehran</span><h3>Teaching assistant, Algorithm Design</h3><p>Problem-solving sessions and exercises for about 20 students a semester.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <div class="inner">
+    <div class="sec-head"><span class="kicker">Toolbox</span><h2>What I work with</h2></div>
+    <div class="skills">
+      <div class="glass"><h3>LLMs &amp; RAG</h3><div class="tags"><span>RAG</span><span>LLM evaluation</span><span>Guardrails</span><span>LangChain</span><span>LiteLLM</span><span>ChromaDB</span><span>Pinecone</span><span>Fine-tuning</span></div></div>
+      <div class="glass"><h3>Machine learning</h3><div class="tags"><span>PyTorch</span><span>TensorFlow</span><span>Scikit-learn</span><span>XGBoost</span><span>Knowledge graphs</span><span>LSTMs</span><span>CNNs</span></div></div>
+      <div class="glass"><h3>Engineering</h3><div class="tags"><span>Python</span><span>FastAPI</span><span>SQL</span><span>PostgreSQL</span><span>Docker</span><span>AWS</span><span>Terraform</span><span>GitHub Actions</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="inner">
+    <div class="glass contact">
+      <span class="kicker">Contact</span>
+      <h2>Let's <span class="grad">talk</span>.</h2>
+      <p>Open to AI Engineer, ML Engineer and Data Scientist roles in the Netherlands.</p>
+      <div class="email">shakiba.shahidiani@gmail.com</div>
+      <div class="btns"><a class="btn primary" href="https://linkedin.com/in/shakiba-shahidiani" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://github.com/ShakibaShahidiani" target="_blank" rel="noopener">GitHub</a><a class="btn" href="cv.pdf" download>CV (PDF)</a></div>
+    </div>
+  </div>
+</section>
+<footer>© 2026 Shakiba Shahidiani · Utrecht, Netherlands</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme'),lab=document.getElementById('theme-label');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches}
+  function upd(){lab.textContent=isDark()?'Light':'Dark'}
+  btn.addEventListener('click',function(){var t=isDark()?'light':'dark';root.setAttribute('data-theme',t);try{localStorage.setItem('theme',t)}catch(e){}upd()});
+  upd();
+
+  var links=document.querySelectorAll('.rail a');
+  function mark(id){links.forEach(function(a){a.classList.toggle('on',a.dataset.s===id)})}
+  mark('top');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)mark(e.target.id)})},{rootMargin:'-45% 0px -50% 0px'});
+    ['top','about','projects','journey','skills','contact'].forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
+  }
+
+  var cv=document.getElementById('net'),ctx=cv.getContext('2d'),pts=[],W=0,H=0,mouse=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);
+    if(!pts.length)for(var i=0;i<Math.min(70,Math.round(W/14));i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
+  cv.parentElement.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top}});
+  cv.parentElement.addEventListener('pointerleave',function(){mouse=null});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var cs=getComputedStyle(root),ink=cs.getPropertyValue('--ink').trim(),g1=cs.getPropertyValue('--glow1').trim();
+    pts.forEach(function(p){if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}});
+    for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dd=dx*dx+dy*dy;
+      if(dd<14000){ctx.strokeStyle=ink;ctx.globalAlpha=.14*(1-dd/14000);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
+    if(mouse)pts.forEach(function(p){var dx=p.x-mouse.x,dy=p.y-mouse.y,dd=dx*dx+dy*dy;if(dd<22000){ctx.strokeStyle=g1;ctx.globalAlpha=.5*(1-dd/22000);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke()}});
+    ctx.fillStyle=ink;ctx.globalAlpha=.35;pts.forEach(function(p){ctx.beginPath();ctx.arc(p.x,p.y,1.7,0,6.3);ctx.fill()});ctx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);size();draw();
+})();
+</script>
+</body>
+</html>
