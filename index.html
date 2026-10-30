@@ -239,6 +239,47 @@ footer{padding-block:34px;color:var(--muted);font-size:13px;text-align:center}
     <div class="sec-head"><span class="kicker">Projects</span><h2>Things I've built</h2><p>Each one taught me something about where AI systems break.</p></div>
         <div class="projects" id="plist">
 
+      <!-- Bike support agent -->
+      <article class="glass proj">
+        <div class="vis">
+          <svg viewBox="0 0 360 230" role="img" aria-label="A support agent calls tools, a code gate asks for confirmation before a return, and evals compare prompt v1 with v2">
+            <rect x="8" y="10" width="172" height="30" rx="15" class="v-card"/><rect x="8" y="10" width="172" height="30" rx="15" class="s-line"/>
+            <text x="94" y="29" text-anchor="middle" class="vt-ink">Return order 1042, please</text>
+            <path d="M60 40 L60 62" class="s-a" stroke-width="2"/>
+            <rect x="8" y="62" width="110" height="36" rx="18" class="v-a"/>
+            <text x="63" y="84" text-anchor="middle" class="vt-ink" style="fill:#fff">agent loop</text>
+            <path d="M118 80 L150 80" class="s-a dash" stroke-width="1.6"/>
+            <rect x="150" y="54" width="202" height="88" rx="10" class="v-card"/><rect x="150" y="54" width="202" height="88" rx="10" class="s-line"/>
+            <text x="162" y="72" class="vt">tools</text>
+            <text x="162" y="92" class="vt-ink">get_order_status</text><text x="340" y="92" text-anchor="end" class="vt">✓ delivered</text>
+            <text x="162" y="111" class="vt-ink">eligibility</text><text x="340" y="111" text-anchor="end" class="vt">✓ 30 days</text>
+            <text x="162" y="130" class="vt-ink">start_return</text><text x="340" y="130" text-anchor="end" class="vt">pending</text>
+            <path d="M150 126 L142 132" class="s-b dash" stroke-width="1.6"/>
+            <path d="M60 98 L60 118" class="s-a" stroke-width="2"/>
+            <rect x="8" y="118" width="134" height="48" rx="10" class="v-card"/><rect x="8" y="118" width="134" height="48" rx="10" class="s-b" stroke-width="2"/>
+            <rect x="18" y="134" width="12" height="10" rx="2" class="v-b"/><path d="M20.5 134 L20.5 131 A3.5 3.5 0 0 1 27.5 131 L27.5 134" class="s-b" stroke-width="1.6"/>
+            <text x="38" y="138" class="vt-ink">Confirm?</text>
+            <text x="38" y="155" class="vt">exact "yes" only</text>
+            <path d="M60 166 L60 186" class="s-a" stroke-width="2"/>
+            <rect x="8" y="186" width="172" height="30" rx="15" class="v-b" opacity=".2"/>
+            <text x="94" y="205" text-anchor="middle" class="vt-ink">✓ return started</text>
+            <rect x="196" y="158" width="156" height="58" rx="10" class="v-card"/><rect x="196" y="158" width="156" height="58" rx="10" class="s-line"/>
+            <text x="208" y="175" class="vt">eval · prompt v1 → v2</text>
+            <text x="208" y="193" class="vt">v1</text><rect x="228" y="186" width="74" height="8" rx="4" class="v-muted" opacity=".6"/><text x="342" y="193" text-anchor="end" class="vt">92%</text>
+            <text x="208" y="208" class="vt">v2</text><rect x="228" y="201" width="80" height="8" rx="4" class="v-b"/><text x="342" y="208" text-anchor="end" class="vt-ink">99%</text>
+          </svg>
+        </div>
+        <div class="ptext">
+          <span class="k">Agents · Tool calling · Evaluation</span>
+          <h3>Bike Support Agent</h3>
+          <p>A customer-support agent for a fictional direct-to-consumer bike brand. It looks up bike specs, checks part compatibility and order status, and searches support docs, retrieving only the current version of each policy.</p>
+          <p class="hl">The model explains, the code enforces. A return only happens after an exact "yes" checked in code, and any number in an answer must come from that turn's tool results.</p>
+          <p>Changing only the system prompt from v1 to v2 raised passing eval cases from 92% to 99% (24 cases, 3 runs each). Every turn logs latency, tokens and cost, and 83 unit tests run without API calls.</p>
+          <div class="tags"><span>LiteLLM</span><span>LangChain tools</span><span>ChromaDB</span><span>FastAPI</span><span>Streamlit</span><span>pytest</span></div>
+          <div class="plinks"><a href="https://github.com/ShakibaShahidiani/bike-support-agent" target="_blank" rel="noopener">View code →</a></div>
+        </div>
+      </article>
+
       <!-- RAG -->
       <article class="glass proj">
         <div class="vis">
@@ -369,7 +410,7 @@ footer{padding-block:34px;color:var(--muted);font-size:13px;text-align:center}
   <div class="inner">
     <div class="sec-head"><span class="kicker">Journey</span><h2>Tehran → Milan → Utrecht</h2></div>
     <div class="journey">
-      <div class="glass step"><span class="when">2026 · Utrecht</span><h3>Building LLM systems</h3><p>Policy Assistant and the LLM Debate System.</p></div>
+      <div class="glass step"><span class="when">2026 · Utrecht</span><h3>Building LLM systems</h3><p>A bike support agent with tool calling, the Policy Assistant and the LLM Debate System.</p></div>
       <div class="glass step"><span class="when">Mar 2025 – Oct 2025 · Milan</span><h3>MSc thesis, Politecnico di Milano</h3><p>Graph machine learning for drug repurposing.</p></div>
       <div class="glass step"><span class="when">Sep 2024 – Sep 2025 · Italy</span><h3>Data Scientist, Corteva Agriscience</h3><p>Seed longevity forecasting from ten years of production data.</p></div>
       <div class="glass step"><span class="when">2019 – 2021 · Tehran</span><h3>Teaching assistant, Algorithm Design</h3><p>Problem-solving sessions and exercises for about 20 students a semester.</p></div>
@@ -381,9 +422,9 @@ footer{padding-block:34px;color:var(--muted);font-size:13px;text-align:center}
   <div class="inner">
     <div class="sec-head"><span class="kicker">Toolbox</span><h2>What I work with</h2></div>
     <div class="skills">
-      <div class="glass"><h3>LLMs &amp; RAG</h3><div class="tags"><span>RAG</span><span>LLM evaluation</span><span>Guardrails</span><span>LangChain</span><span>LiteLLM</span><span>ChromaDB</span><span>Pinecone</span><span>Fine-tuning</span></div></div>
+      <div class="glass"><h3>LLMs &amp; RAG</h3><div class="tags"><span>RAG</span><span>Tool calling</span><span>LLM evaluation</span><span>Guardrails</span><span>LangChain</span><span>LiteLLM</span><span>ChromaDB</span><span>Pinecone</span><span>Fine-tuning</span></div></div>
       <div class="glass"><h3>Machine learning</h3><div class="tags"><span>PyTorch</span><span>TensorFlow</span><span>Scikit-learn</span><span>XGBoost</span><span>Knowledge graphs</span><span>LSTMs</span><span>CNNs</span></div></div>
-      <div class="glass"><h3>Engineering</h3><div class="tags"><span>Python</span><span>FastAPI</span><span>SQL</span><span>PostgreSQL</span><span>Docker</span><span>AWS</span><span>Terraform</span><span>GitHub Actions</span></div></div>
+      <div class="glass"><h3>Engineering</h3><div class="tags"><span>Python</span><span>FastAPI</span><span>Streamlit</span><span>pytest</span><span>SQL</span><span>PostgreSQL</span><span>Docker</span><span>AWS</span><span>Terraform</span><span>GitHub Actions</span></div></div>
     </div>
   </div>
 </section>
